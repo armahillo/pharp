@@ -9,4 +9,3 @@
 - AR class needs additional methods
 +-- static::all() needs to be completed
 +-- __invoke should handle Rails-style "magic finders"
-+-- __toString() should return a merge of the data + dirty_data arrays

@@ -64,7 +64,7 @@ print_r($this->dirty_data);
 		$field = strtolower($field);
 		if (isset($this->dirty_data[$field])) return $this->dirty_data[$field];
 		elseif (isset($this->data[$field])) return $this->data[$field];
-		else return "FOO";
+		else return NULL;
 	}
 	
 	function __set($field, $value) {
@@ -74,6 +74,10 @@ print_r($this->dirty_data);
 		    && $field != "updated_at"
 		    && isset($this->data[$field])) { $this->dirty_data[$field] = $value; return true; }
 		return false;
+	}
+
+	function __toString() {
+		return var_dump(array_merge($this->data, $this->dirty_data));
 	}
 	
 	static final public function set_db($dbh) {
