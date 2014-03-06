@@ -1,6 +1,12 @@
 <?php
+// schema: sample_models
+// id : int, pk
+// name : varchar
+// keyword: varchar
+// size : int
 
-class Ingredient extends ActiveRecord {
+
+class SampleModel extends ActiveRecord {
 	
 }
 
