@@ -11,9 +11,7 @@ $db->select();
 
 // Assign the DBH to the base model
 ActiveRecord::set_db($db);
-
-// See SampleModel.php for the table info
-SampleModel::set_table("sample_models");
+// The table name is set in the model class itself.
 
   ///////////////////////////////
  // DEMO ///////////////////////
@@ -47,7 +45,7 @@ SampleModel::first(); // -> record with ID 1
 SampleModel::find(2); // -> record with ID 2
 
 // OK no, we want ALL of them
-SampleModel::all(); // will return an array of all records, not yet implemented
+SampleModel::all(); // will return an array of all records
 
 
 ?>

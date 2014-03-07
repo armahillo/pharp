@@ -28,14 +28,17 @@ abstract class ActiveRecord {
 	}
 	
 	static function all($limit = 50, $page = 1) {
-		self::$dbh->query("SELECT * FROM " . static::$table_name . " LIMIT $limit,$page");
-		# TODO FINISH THIS
+		self::$dbh->query("SELECT * FROM " . static::$table_name . " LIMIT $page,$limit");
+		$result = array();
+		while($row = self::$dbh->fetch_assoc()) {
+			$result[] = new static($row);
+		}
+		return $result;
 	}
 	
 	function save() {
 		if (empty($this->dirty_data)) { return true; }
 		$success = false;
-print_r($this->dirty_data);		
 		if (isset($this->data['id'])) {
 		  $query = "UPDATE " . static::$table_name . " SET ";
 		  $fields = "";
@@ -84,9 +87,6 @@ print_r($this->dirty_data);
 		if (empty(self::$dbh)) {
 		  self::$dbh = $dbh;
 		}
-	}
-	static public function set_table($table_name) {
-		static::$table_name = $table_name;
 	}
 }
 

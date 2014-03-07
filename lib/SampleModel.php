@@ -7,7 +7,7 @@
 
 
 class SampleModel extends ActiveRecord {
-	
+	protected $table_name = "sample_models";	
 }
 
 ?>

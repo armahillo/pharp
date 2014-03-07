@@ -4,8 +4,6 @@
 +-- more tightly coupled with the AR class (fully integrated?)
 
 - AR class needs to be optimized
-+-- set_table shouldn't be necessary
 
 - AR class needs additional methods
-+-- static::all() needs to be completed
 +-- __invoke should handle Rails-style "magic finders"
