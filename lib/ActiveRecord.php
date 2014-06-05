@@ -6,7 +6,7 @@ abstract class ActiveRecord {
 	protected $data = array();
 	protected $dirty_data = array();
 	
-	function __construct($data) {
+	function __construct($data = array()) {
 	    $this->data = $data;
 	    if (!isset($data['id'])) { $this->dirty_data = $data; }
 	}
@@ -27,7 +27,7 @@ abstract class ActiveRecord {
 		return new static(self::$dbh->fetch_assoc());
 	}
 	
-	static function all($limit = 50, $page = 1) {
+	static function all($limit = 50, $page = 0) {
 		self::$dbh->query("SELECT * FROM " . static::$table_name . " LIMIT $page,$limit");
 		$result = array();
 		while($row = self::$dbh->fetch_assoc()) {
